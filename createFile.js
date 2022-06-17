@@ -4,6 +4,7 @@ let fileNumber = 1;
 
 while (fileNumber <= 5) {
     createFileAsync(fileNumber);
+    createFileSync(fileNumber);
     fileNumber++;
 }
 
@@ -15,4 +16,9 @@ function createFileAsync(fileNumber) {
     });
 }
 
+function createFileSync(fileNumber) {
+    console.time(`time (sync-file-${fileNumber})`);
+    fs.writeFileSync(`sync-test-${fileNumber}.txt`, 'Hello Node.js')
+    console.timeEnd(`time (sync-file-${fileNumber})`);
+}
 
